@@ -4,6 +4,8 @@
                              plug_cowboy,phoenix,phoenix_ecto]},
               {description,"medium_graphql_api"},
               {modules,['Elixir.MediumGraphqlApi',
+                        'Elixir.MediumGraphqlApi.Accounts',
+                        'Elixir.MediumGraphqlApi.Accounts.User',
                         'Elixir.MediumGraphqlApi.Application',
                         'Elixir.MediumGraphqlApi.DataCase',
                         'Elixir.MediumGraphqlApi.Repo',
