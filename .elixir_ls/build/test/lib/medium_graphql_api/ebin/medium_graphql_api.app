@@ -19,6 +19,7 @@
                         'Elixir.MediumGraphqlApiWeb.Gettext',
                         'Elixir.MediumGraphqlApiWeb.Router',
                         'Elixir.MediumGraphqlApiWeb.Router.Helpers',
+                        'Elixir.MediumGraphqlApiWeb.Schema',
                         'Elixir.MediumGraphqlApiWeb.UserSocket']},
               {registered,[]},
               {vsn,"0.1.0"},
