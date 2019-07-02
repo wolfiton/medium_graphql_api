@@ -5,7 +5,14 @@ defmodule MediumGraphqlApiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", MediumGraphqlApiWeb do
+  scope "/api" do
     pipe_through :api
+
+    forward("/graphql", Absinthe.Plug, schema: MediumGraphqlApiWeb.Schema)
+
+    @doc "use graphiql only if the application is in :dev mode"
+    if Mix.env() == :dev do
+      forward("/graphiql", Absinthe.Plug.GraphiQL, schema: MediumGraphqlApiWeb.Schema)
+    end
   end
 end
