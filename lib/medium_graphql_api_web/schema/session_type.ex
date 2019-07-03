@@ -1,4 +1,4 @@
-defmodule MediumGraphqlApiWeb.Schema.Types.Sessiontype do
+defmodule MediumGraphqlApiWeb.Schema.Types.SessionType do
   use Absinthe.Schema.Notation
 
   @desc "describe the session type"
