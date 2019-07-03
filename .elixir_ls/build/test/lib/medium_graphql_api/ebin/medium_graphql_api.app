@@ -21,6 +21,7 @@
                         'Elixir.MediumGraphqlApiWeb.ErrorHelpers',
                         'Elixir.MediumGraphqlApiWeb.ErrorView',
                         'Elixir.MediumGraphqlApiWeb.Gettext',
+                        'Elixir.MediumGraphqlApiWeb.Plugs.Context',
                         'Elixir.MediumGraphqlApiWeb.Resolvers.SessionResolver',
                         'Elixir.MediumGraphqlApiWeb.Resolvers.UserResolver',
                         'Elixir.MediumGraphqlApiWeb.Router',
