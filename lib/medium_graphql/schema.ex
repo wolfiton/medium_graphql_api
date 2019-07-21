@@ -12,6 +12,12 @@ defmodule MediumGraphqlApiWeb.Schema do
       resolve &__MODULE__.PostResolver.posts/3
     end
 
+    @desc "get a post by id"
+    field :post, list_of(:post) do
+      arg(:id, non_null(:id))
+      resolve &__MODULE__.PostResolver.post/3
+    end
+
     @desc "get a list of users"
     field :users, list_of(:user) do
       middleware __MODULE__.Middleware.Authorize, :any
