@@ -42,6 +42,7 @@ export default {
   */
   modules: [
     '@nuxtjs/vuetify',
+    '@nuxtjs/apollo',
   ],
   /*
   ** vuetify module configuration
@@ -66,6 +67,11 @@ export default {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
+    }
+  },
+  apollo: {
+    clientConfigs: {
+      default: '~/apollo/client-configs/default.js'
     }
   }
 }
