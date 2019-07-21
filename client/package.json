@@ -11,12 +11,19 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/apollo": "^4.0.0-rc8.2",
     "@nuxtjs/vuetify": "0.5.5",
-    "nuxt": "^2.0.0"
+    "apollo-cache-inmemory": "^1.6.2",
+    "apollo-link": "^1.2.12",
+    "apollo-link-http": "^1.5.15",
+    "graphql": "^14.4.2",
+    "graphql-tag": "^2.10.1",
+    "nuxt": "^2.0.0",
+    "vue-markdown": "^2.2.4"
   },
   "devDependencies": {
+    "nodemon": "^1.18.9",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2",
-    "nodemon": "^1.18.9"
+    "stylus-loader": "^3.0.2"
   }
 }
