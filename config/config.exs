@@ -27,8 +27,10 @@ config :phoenix, :json_library, Jason
 
 # Guardian config
 
-config :medium_graphql_api, MediumGraphqlApi.Guardian,
+config :medium_graphql_api, MediumGraphqlApiWeb.Guardian,
   issuer: "medium_graphql_api",
+  verify_issuer: true,
+  ttl: {30, :days},
   secret_key: "U2HdLms2G79hO6yqSPQzaZoNCayDl8o1vKqe2mwJ1q1qowLwG2M4eKlVWaVRZk0O"
 
 # Import environment specific config. This must remain at the bottom

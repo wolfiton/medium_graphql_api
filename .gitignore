@@ -9,6 +9,8 @@
 
 # Where 3rd-party dependencies like ExDoc output generated docs.
 /doc/
+/client/node_modules
+/.elixir_ls
 
 # Ignore .fetch files in case you like to edit your project deps locally.
 /.fetch
@@ -18,6 +20,7 @@ erl_crash.dump
 
 # Also ignore archive artifacts (built via "mix archive.build").
 *.ez
+*.env
 
 # Ignore package tarball (built via "mix hex.build").
 medium_graphql_api-*.tar
