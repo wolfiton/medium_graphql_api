@@ -23,6 +23,12 @@ export const POSTS_QUERY = gql `
     query Posts {
         posts {
             id
+            title
+            user {
+                id
+                firstName
+                lastName
+            }
         }
     }
 `
