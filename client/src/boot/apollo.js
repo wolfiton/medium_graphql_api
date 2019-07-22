@@ -1,34 +1,34 @@
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import VueApollo from 'vue-apollo';
-import { createHttpLink } from 'apollo-link-http';
+import { HttpLink } from 'apollo-link-http';
+import fetch from 'node-fetch';
 
+// Cache implementation
+const cache = new InMemoryCache();
 
-const api = createHttpLink({ uri: 'http://localhost:4000/graphql'});
+// Create the apollo client
+const api = 'http://localhost:4000/api/graphql';
 
 const apolloClient = new ApolloClient({
-  link: api,
-  cache: new InMemoryCache(),
+  link: new HttpLink({ uri: api, fetch }),
+  cache,
   connectToDevTools: true,
 });
 
-export const apolloProvider = new VueApollo({
+export const apollo = new VueApollo({
   defaultClient: apolloClient,
-  errorHandler ({ graphQLErrors, networkError }) {
+  errorHandler({ graphQLErrors, networkError }) {
     if (graphQLErrors) {
-      graphQLErrors.map(({ message, locations, path }) =>
-        console.log(
-          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-        )
-      )
+      graphQLErrors.map(({ message, locations }) => console.log(`[GraphQL error]: Message: ${message}, location ${locations}`));
     }
     if (networkError) {
-      console.log(`[Network error]: ${networkError}`)
+      console.log(`[Network error]: ${networkError}`);
     }
-  }
+  },
 });
 
 export default ({ app, Vue }) => {
-  Vue.use(VueApollo)
-  app.apolloProvider = apolloProvider
+  Vue.use(VueApollo);
+  app.apollo = apollo;
 };
