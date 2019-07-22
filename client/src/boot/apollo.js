@@ -2,7 +2,7 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import VueApollo from 'vue-apollo';
 import { HttpLink } from 'apollo-link-http';
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
 // Cache implementation
 const cache = new InMemoryCache();
@@ -11,12 +11,12 @@ const cache = new InMemoryCache();
 const api = 'http://localhost:4000/api/graphql';
 
 const apolloClient = new ApolloClient({
-  link: new HttpLink({ uri: api, fetch }),
+  link: new HttpLink({ uri: api }),
   cache,
   connectToDevTools: true,
 });
 
-export const apollo = new VueApollo({
+export const apolloProvider = new VueApollo({
   defaultClient: apolloClient,
   errorHandler({ graphQLErrors, networkError }) {
     if (graphQLErrors) {
@@ -30,5 +30,5 @@ export const apollo = new VueApollo({
 
 export default ({ app, Vue }) => {
   Vue.use(VueApollo);
-  app.apollo = apollo;
+  app.apolloProvider = apolloProvider;
 };

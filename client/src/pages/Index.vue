@@ -5,7 +5,7 @@
     <div>
       <div v-if="posts.length < 1">
         <h1>No posts</h1>
-      </div>Testing if this is the way
+      </div>
       <div v-for="post in posts" :key="post.id">{{ post.title }}</div>
     </div>
   </q-page>

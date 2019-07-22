@@ -4,10 +4,13 @@ defmodule MediumGraphqlApiWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
     plug(MediumGraphqlApiWeb.Plugs.Context)
+    plug CORSPlug, origin: ["http://localhost:8080"]
   end
 
   scope "/api" do
+
     pipe_through :api
+
 
     forward("/graphql", Absinthe.Plug, schema: MediumGraphqlApiWeb.Schema)
 
