@@ -33,6 +33,10 @@ module.exports = function (ctx) {
       components: [
         'QLayout',
         'QHeader',
+        'QCardSection',
+        'QCardActions',
+        'QInput',
+        'QCard',
         'QDrawer',
         'QPageContainer',
         'QPage',
@@ -56,7 +60,7 @@ module.exports = function (ctx) {
 
     build: {
       scopeHoisting: true,
-      // vueRouterMode: 'history',
+      vueRouterMode: 'history',
       // vueCompiler: true,
       // gzip: true,
       // analyze: true,

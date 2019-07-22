@@ -10,10 +10,12 @@
 # Where 3rd-party dependencies like ExDoc output generated docs.
 /doc/
 /client/node_modules
-/.elixir_ls
-/client/.nuxt
+/client/.quasar
+/client/package-lock.json
+/client/yarn.lock
 # Ignore .fetch files in case you like to edit your project deps locally.
 /.fetch
+/.elixir_ls
 
 # If the VM crashes, it generates a dump, let's ignore it too.
 erl_crash.dump
