@@ -16,9 +16,7 @@ mix ecto.migrate
 
 #### Adding deps
 
-```
-
-elixir
+```elixir
 
 defp deps do
 [
