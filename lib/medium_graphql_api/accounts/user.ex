@@ -4,7 +4,7 @@ defmodule MediumGraphqlApi.Accounts.User do
 
   schema "users" do
     field :attempts, :string
-    field :confirmed, :string
+    field :confirmed, :string, default: null
     field :email, :string
     field :locked, :string
     field :password_hash, :string

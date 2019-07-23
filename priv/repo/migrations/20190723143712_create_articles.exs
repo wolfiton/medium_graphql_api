@@ -9,6 +9,7 @@ defmodule MediumGraphqlApi.Repo.Migrations.CreateArticles do
       add :view_count, :string
       add :tags_id, references(:tags, on_delete: :nothing)
       add :category_id, references(:category, on_delete: :nothing)
+      add :likes, :integer, default: 0
 
       timestamps()
     end

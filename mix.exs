@@ -43,12 +43,11 @@ defmodule MediumGraphqlApi.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:absinthe, "~> 1.4"},
       {:absinthe_plug, "~> 1.4"},
-      {:absinthe_ecto, "~> 0.1.3"}
+      {:absinthe_ecto, "~> 0.1.3"},
       {:argon2_elixir, "~> 2.0.5"},
       {:absinthe_phoenix, "~> 1.4"},
       {:bamboo, "~> 1.2"},
       {:bamboo_smtp, "~> 1.7"},
-      {:argon2_elixir, "~> 2.0"}
     ]
   end
 

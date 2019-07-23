@@ -7,6 +7,7 @@ defmodule MediumGraphqlApi.Blog.Article do
     field :slug, :string
     field :title, :string
     field :view_count, :string
+    field :likes, :integer
     field :tags_id, :id
     field :category_id, :id
 
