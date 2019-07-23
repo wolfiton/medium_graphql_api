@@ -18,6 +18,6 @@ defmodule MediumGraphqlApi.Accounts.User do
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:email, :username, :password_hash, :attempts, :confirmed, :locked])
-    |> validate_required([:email, :username, :password_hash, :attempts, :confirmed, :locked])
+    |> validate_required([:email, :username, :password_hash])
   end
 end
