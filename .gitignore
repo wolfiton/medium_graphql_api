@@ -9,20 +9,15 @@
 
 # Where 3rd-party dependencies like ExDoc output generated docs.
 /doc/
-/client/node_modules
-/client/.quasar
-/client/package-lock.json
-/client/yarn.lock
+
 # Ignore .fetch files in case you like to edit your project deps locally.
 /.fetch
-/.elixir_ls
 
 # If the VM crashes, it generates a dump, let's ignore it too.
 erl_crash.dump
 
 # Also ignore archive artifacts (built via "mix archive.build").
 *.ez
-*.env
 
 # Ignore package tarball (built via "mix hex.build").
 medium_graphql_api-*.tar
@@ -31,5 +26,3 @@ medium_graphql_api-*.tar
 # we ignore priv/static. You may want to comment
 # this depending on your deployment strategy.
 /priv/static/
-
-/client/node_modules
