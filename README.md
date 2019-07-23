@@ -4,13 +4,13 @@
 
 Account Context -> User -> users
 
-Blog Context -> Blog -> Article -> articles
+Blog Context -> Article -> articles
 
-Blog Context -> Blog -> Comment -> comments
+Blog Context -> Comment -> comments
 
-Blog Context -> Blog -> Category -> categories
+Blog Context -> Category -> categories
 
-Blog Context -> Blog -> Tag -> tags
+Blog Context -> Tag -> tags
 
 ### Runing migrations
 
