@@ -14,7 +14,9 @@ Blog Context -> Blog -> Tag -> tags
 
 ### Runing migrations
 
-`elixir mix ecto.migrate`
+```elixir
+mix ecto.migrate
+```
 
 #### Adding deps
 
