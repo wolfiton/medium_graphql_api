@@ -6,13 +6,15 @@ Account Context -> User -> users
 
 Blog Context -> Blog -> Article -> articles
 
+Blog Context -> Blog -> Comment -> comments
+
 Blog Context -> Blog -> Category -> categories
 
 Blog Context -> Blog -> Tag -> tags
 
 ### Runing migrations
 
-mix ecto.migrate
+`elixir mix ecto.migrate`
 
 #### Adding deps
 
@@ -35,7 +37,6 @@ defp deps do
 {:absinthe_phoenix, "~> 1.4"},
 {:bamboo, "~> 1.2"},
 {:bamboo_smtp, "~> 1.7"},
-{:argon2_elixir, "~> 2.0"}
 ]
 end
 ```
@@ -45,6 +46,8 @@ end
 - Users Seed
 
 - Articles Seed
+
+- Comments Seed
 
 - Tags Seed
 
