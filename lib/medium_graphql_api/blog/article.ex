@@ -8,8 +8,7 @@ defmodule MediumGraphqlApi.Blog.Article do
     field :title, :string
     field :view_count, :string
     field :likes, :integer
-    field :tags_id, :id
-    field :category_id, :id
+
 
     timestamps()
   end

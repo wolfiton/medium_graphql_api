@@ -5,6 +5,7 @@ defmodule MediumGraphqlApi.Blog.Comment do
   schema "comments" do
     field :message, :string
     field :user_id, :id
+    belongs_to :users, MediumGraphqlApi.Accounts.User
 
     timestamps()
   end

@@ -3,13 +3,14 @@ defmodule MediumGraphqlApi.Accounts.User do
   import Ecto.Changeset
 
   schema "users" do
-    field :username, :string
-    field :email, :string
-    field :password_hash, :string
-    field :role, :string
-    field :confirmed, :boolean
-    field :attempts, :string
-    field :locked, :string
+    field(:username, :string)
+    field(:email, :string)
+    field(:password_hash, :string)
+    field(:role, :string)
+    field(:confirmed, :boolean)
+    field(:attempts, :string)
+    field(:locked, :string)
+    has_many(:comments, MediumGraphqlApi.Blog.Comment)
 
     timestamps()
   end

@@ -3,12 +3,12 @@ defmodule MediumGraphqlApi.Repo.Migrations.CreateComments do
 
   def change do
     create table(:comments) do
-      add :message, :string
-      add :user_id, references(:user, on_delete: :nothing)
+      add(:message, :string)
+      add(:user_id, references(:users, on_delete: :nothing))
 
       timestamps()
     end
 
-    create index(:comments, [:user_id])
+    create(index(:comments, [:user_id]))
   end
 end
