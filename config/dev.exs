@@ -4,7 +4,7 @@ use Mix.Config
 config :medium_graphql_api, MediumGraphqlApi.Repo,
   username: "dan",
   password: "postgres",
-  database: "medium_graphql_api_dev",
+  database: "medium_graphql_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

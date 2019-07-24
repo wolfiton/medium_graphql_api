@@ -10,7 +10,7 @@ defmodule MediumGraphqlApi.Accounts.User do
     field(:confirmed, :boolean)
     field(:attempts, :string)
     field(:locked, :string)
-    has_many(:comments, MediumGraphqlApi.Blog.Comment)
+    has_many(:comments, MediumGraphqlApi.Blog.Comment, foreign_key: :comment_id, references: :id)
 
     timestamps()
   end

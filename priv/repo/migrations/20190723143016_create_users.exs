@@ -10,7 +10,7 @@ defmodule MediumGraphqlApi.Repo.Migrations.CreateUsers do
       add(:confirmed, :string)
       add(:attempts, :string)
       add(:locked, :string)
-      add(:comment_id, references(:comment, on_delete: :nothing))
+      add(:comment_id, references(:comments, on_delete: :nothing))
 
       timestamps()
     end
