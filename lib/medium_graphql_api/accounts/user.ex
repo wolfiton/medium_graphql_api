@@ -3,14 +3,13 @@ defmodule MediumGraphqlApi.Accounts.User do
   import Ecto.Changeset
 
   schema "users" do
-    field(:username, :string)
-    field(:email, :string)
-    field(:password_hash, :string)
-    field(:role, :string)
-    field(:confirmed, :boolean)
-    field(:attempts, :string)
-    field(:locked, :string)
-    has_many(:comments, MediumGraphqlApi.Blog.Comment, foreign_key: :comment_id, references: :id)
+    field :attempts, :string
+    field :confirmed, :string
+    field :email, :string
+    field :locked, :string
+    field :password, :string
+    field :role, :string
+    field :username, :string
 
     timestamps()
   end
@@ -18,7 +17,7 @@ defmodule MediumGraphqlApi.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:email, :username, :password_hash, :attempts, :confirmed, :locked])
-    |> validate_required([:email, :username, :password_hash])
+    |> cast(attrs, [:username, :email, :password, :role, :confirmed, :attempts, :locked])
+    |> validate_required([:username, :email, :password, :role, :confirmed, :attempts, :locked])
   end
 end

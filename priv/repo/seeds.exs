@@ -10,19 +10,17 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias MediumGraphqlApi.Repo
+# alias MediumGraphqlApi.Repo
 
-alias MediumGraphqlApi.Account.User
+# alias MediumGraphqlApi.Account.User
 
-alias MediumGraphqlApi.Blog.{Article, Category, Tag}
+# alias MediumGraphqlApi.Blog.{Article, Category, Tag}
 
+# programming_language =
+#   %Category{}
+#   |> Category.changeset(%{
+#       name: "programming language",
+#       slug: "programming-language",
 
-
-programming_language =
-  %Category{}
-  |> Category.changeset(%{
-      name: "programming language",
-      slug: "programming-language",
-
-    })
-  |> Repo.insert!
+#     })
+#   |> Repo.insert!
