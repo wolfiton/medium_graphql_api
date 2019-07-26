@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-flow: row;
+  width: auto;
+}
+
+.item {
+  height: 100px;
+  width: 100px; /* A fixed width as the default */
+  background: green;
+}
+
+.item-center {
+  flex-grow: 3; /* Set the middle element to grow and stretch */
+  background: red;
+}

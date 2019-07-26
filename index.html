@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="./node_modules/tachyons/css/tachyons.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="flex justify-between bb b--white-10" style="background: green;">
+      <a class="link white-70 hover-white no-underline flex items-center pa3" href="">
+        <svg class="dib h1 w1" data-icon="grid" viewBox="0 0 32 32" style="fill:orange">
+          <title>Super Normal Icon Mark</title>
+          <path
+            d="M2 2 L10 2 L10 10 L2 10z M12 2 L20 2 L20 10 L12 10z M22 2 L30 2 L30 10 L22 10z M2 12 L10 12 L10 20 L2 20z M12 12 L20 12 L20 20 L12 20z M22 12 L30 12 L30 20 L22 20z M2 22 L10 22 L10 30 L2 30z M12 22 L20 22 L20 30 L12 30z M22 22 L30 22 L30 30 L22 30z">
+          </path>
+        </svg>
+      </a>
+      <input type="text" placeholder="Search" class="mt2-ns fw2-ns fs-normal-l"style="height: 40px">
+      <div class="flex-grow pa3 flex items-center">
+        <a class="f6 dib white bg-animate hover-bg-white hover-black no-underline pv2 ph4 br-pill ba b--white-20 mr1-ns" href="#0">About</a>
+        <a class="f6 dib white bg-animate hover-bg-white hover-black no-underline pv2 ph4 br-pill ba b--white-20" href="#0">Sign In</a>
+        <a class="f6 dib white bg-animate hover-bg-white hover-black no-underline pv2 ph4 br-pill ba b--white-20"
+          href="#0">Sign Up</a>
+
+      </div>
+    </nav>
+
+    <article class="cf">
+      <div class="fl w-20 bg-near-white tc">
+        <form class="pa4">
+          <fieldset id="favorite_movies" class="bn">
+            <legend class="fw7 mb2">Filter Search</legend>
+            <h1>Categories</h1>
+            <div class="flex items-center mb2">
+              <input class="mr2" type="checkbox" id="phoenix" value="phoenix" />
+              <label for="phoenix" class="lh-copy">Phoenix</label>
+            </div>
+            <div class="flex items-center mb2">
+              <input class="mr2" type="checkbox" id="programming-language" value="programming-language" />
+              <label for="programming-language" class="lh-copy">Programming Language</label>
+            </div>
+
+            <h1>Tags</h1>
+            <div class="flex items-center mb2">
+              <input class="mr2" type="checkbox" id="phoenix" value="phoenix" />
+              <label for="phoenix" class="lh-copy">phoenix</label>
+            </div>
+            <div class="flex items-center mb2">
+              <input class="mr2" type="checkbox" id="ecto" value="ecto" />
+              <label for="ecto" class="lh-copy">ecto</label>
+            </div>
+
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="fl w-80 bg-light-gray tc">
+        <!-- <h1>Column Two</h1> -->
+        <section class="mw7 center">
+          <h2 class="athelas ph3 ph0-l">News</h2>
+          <article class="pv4 bt bb b--black-10 ph3 ph0-l">
+            <div class="flex flex-column flex-row-ns">
+              <div class="w-100 w-60-ns pr3-ns order-2 order-1-ns">
+                <h1 class="f3 athelas mt0 lh-title">Tech Giant Invests Huge Money to Build a Computer Out of Science Fiction
+                </h1>
+                <p class="f5 f4-l lh-copy athelas">
+                  The tech giant says it is ready to begin planning a quantum
+                  computer, a powerful cpu machine that relies on subatomic particles instead
+                  of transistors.
+                </p>
+              </div>
+              <div class="pl3-ns order-1 order-2-ns mb4 mb0-ns w-100 w-40-ns">
+                <img src="http://mrmrs.github.io/photos/cpu.jpg" class="db"
+                  alt="Photo of a dimly lit room with a computer interface terminal.">
+              </div>
+            </div>
+            <div><h3>Categories:</h3>
+            <a class="f6 link dim br3 ph3 pv2 mb2 dib white bg-orange" href="#0">Phoenix</a>
+            <a class="f6 link dim br3 ph3 pv2 mb2 dib white bg-orange" href="#0">Web Framework</a>
+            </div>
+            <div class="ph3">
+              <h3>Tags</h3>
+              <a class="f6 link dim br3 ph3 pv2 mb2 dib white bg-orange" href="#0">#phoenix</a>
+              <a class="f6 link dim br3 ph3 pv2 mb2 dib white bg-orange" href="#0">#ecto</a>
+
+            </div>
+            <a class="f6 link dim br3 ph3 pv2 mb2 dib white bg-orange" href="#0">Likes 10</a>
+            <a class="f6 link dim br3 ph3 pv2 mb2 dib white bg-orange" href="#0">View count 300</a>
+            <p class="f6 lh-copy gray mv0">By <span class="ttu">Robin Darnell</span></p>
+            <time class="f6 db gray">Nov. 21, 2016</time>
+          </article>
+          <article class="pv4 bb b--black-10 ph3 ph0-l">
+            <div class="flex flex-column flex-row-ns">
+              <div class="w-100 w-60-ns pr3-ns order-2 order-1-ns">
+                <h1 class="f3 athelas mt0 lh-title">A whale takes up residence in a large body of water</h1>
+                <p class="f5 f4-l lh-copy athelas">
+                  This giant of a whale says it is ready to begin planning a new
+                  swim later this afternoon. A powerful mammal that relies on fish and plankton instead
+                  of hamburgers.
+                </p>
+              </div>
+              <div class="pl3-ns order-1 order-2-ns mb4 mb0-ns w-100 w-40-ns">
+                <img src="http://mrmrs.github.io/photos/whale.jpg" class="db"
+                  alt="Photo of a whale's tale coming crashing out of the water.">
+              </div>
+            </div>
+            <p class="f6 lh-copy gray mv0">By <span class="ttu">Katherine Grant</span></p>
+            <time class="f6 db gray">Nov. 19, 2016</time>
+          </article>
+          <article class="pv4 bb b--black-10 ph3 ph0-l">
+            <div class="flex flex-column flex-row-ns">
+              <div class="w-100 w-60-ns pr3-ns order-2 order-1-ns">
+                <h1 class="f3 athelas mt0 lh-title">
+                  ‘We Couldn’t Believe Our Eyes’: A Lost World of Vinyl Is Found
+                </h1>
+                <p class="f5 f4-l lh-copy athelas">
+                  Archaeologists have found more than 40 tons of vinyl records,
+                  some more than a five years old, shedding light on early hipster
+                  trends.
+                </p>
+              </div>
+              <div class="pl3-ns order-1 order-2-ns mb4 mb0-ns w-100 w-40-ns">
+                <img src="http://mrmrs.github.io/photos/warehouse.jpg" class="db"
+                  alt="Photo of a warehouse with stacked shelves.">
+              </div>
+            </div>
+            <p class="f6 lh-copy gray mv0">By <span class="ttu">Imelda Clancy</span></p>
+            <time class="f6 db gray">Nov. 19, 2016</time>
+          </article>
+        </section>
+      </div>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "medium-demo",
+  "version": "1.0.0",
+  "description": "Simple demo",
+  "main": "index.js",
+  "author": "Wolfiton",
+  "license": "MIT",
+  "scripts": {
+    "start": " live-server ./"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  },
+  "dependencies": {
+    "tachyons": "4.10.0"
+  }
+}
