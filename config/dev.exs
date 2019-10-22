@@ -2,7 +2,7 @@ use Mix.Config
 
 # Configure your database
 config :medium_graphql_api, MediumGraphqlApi.Repo,
-  username: "dan",
+  username: "postgres",
   password: "postgres",
   database: "medium_graphql_dev",
   hostname: "localhost",
