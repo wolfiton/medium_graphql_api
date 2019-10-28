@@ -17,5 +17,6 @@ defmodule MediumGraphqlApi.Blog.Post do
       post
       |> cast(attrs, [:title, :body])
       |> validate_required([:title])
+      |> foreign_key_constraint(:user_id)
     end
   end

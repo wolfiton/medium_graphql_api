@@ -11,9 +11,9 @@ defmodule MediumGraphqlApiWeb.Router do
     pipe_through :api
 
     forward "/graphql", Absinthe.Plug,
-      schema: MkWeb.Schema
+      schema: MediumGraphqlApiWeb.Schema
 
     forward "/graphiql", Absinthe.Plug.GraphiQL,
-      schema: MkWeb.Schema
+      schema: MediumGraphqlApiWeb.Schema
   end
 end
