@@ -11,12 +11,35 @@
         >
           <q-icon name="menu" />
         </q-btn>
+         <q-btn
+              color="secondary"
+              style="width:100px;"
+              @click="$router.push('/')"
+            >Home</q-btn>
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
+        <q-btn
+              color="secondary"
+              style="width:100px;"
+              @click="$router.push('/signin')"
+            >Sign In</q-btn>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn
+              color="secondary"
+              style="width:100px;"
+              @click="$router.push('/signup')"
+            >Sign Up</q-btn>
+
+        <q-btn
+              color="secondary"
+              style="width:100px;"
+              @click="$router.push('/secret')"
+            >Secret</q-btn>
+
+        <q-btn
+          color="secondary"
+          style="width:100px;"
+          @click="logout"
+            >Logout</q-btn>
       </q-toolbar>
     </q-header>
 
@@ -92,6 +115,7 @@
 
 <script>
 import { openURL } from 'quasar';
+import { removeToken } from '../router/auth'
 
 export default {
   name: 'MyLayout',
@@ -102,6 +126,10 @@ export default {
   },
   methods: {
     openURL,
+    logout() {
+      removeToken()
+      this.$router.replace('/');
+    }
   },
 };
 </script>

@@ -6,11 +6,10 @@ defmodule MediumGraphqlApi.Blog.CategoryToPost do
     @required_fields ~w(category_id post_id)a
   
     schema "category_to_post" do
-      belongs_to(:category, MediumGraphqlApi.Blog.Category, primary_key: true)
-      belongs_to(:post, MediumGraphqlApi.Blog.Post, primary_key: true)
+      belongs_to(:category, MediumGraphqlApi.Blog.Category, primary_key: true, foreign_key: :category_id)
+      belongs_to(:post, MediumGraphqlApi.Blog.Post, primary_key: true, foreign_key: :post_id)
 
-
-      timestamps()
+      # timestamps()
     end
   
     @doc false

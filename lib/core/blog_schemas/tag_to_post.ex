@@ -6,11 +6,10 @@ defmodule MediumGraphqlApi.Blog.TagToPost do
     @required_fields ~w(tag_id post_id)a
   
     schema "tag_to_post" do
-      belongs_to(:tag, MediumGraphqlApi.Blog.Tag, primary_key: true)
-      belongs_to(:post, MediumGraphqlApi.Blog.Post, primary_key: true)
+      belongs_to(:tag, MediumGraphqlApi.Blog.Tag, primary_key: true, foreign_key: :tag_id)
+      belongs_to(:post, MediumGraphqlApi.Blog.Post, primary_key: true, foreign_key: :post_id)
 
-
-      timestamps()
+      # timestamps()
     end
   
     @doc false

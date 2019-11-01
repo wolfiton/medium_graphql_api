@@ -6,7 +6,7 @@ defmodule MediumGraphqlApi.Blog.Tag do
       field :name, :string
       many_to_many(:posts, MediumGraphqlApi.Blog.Post, join_through: "tag_to_post", on_replace: :delete)
      
-      timestamps()
+      # timestamps()
     end
   
     @doc false
@@ -14,5 +14,6 @@ defmodule MediumGraphqlApi.Blog.Tag do
       tag
       |> cast(attrs, [:name])
       |> validate_required([:name])
+      |> unique_constraint(:name)
     end
   end

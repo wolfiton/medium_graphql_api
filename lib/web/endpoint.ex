@@ -1,9 +1,9 @@
 defmodule MediumGraphqlApiWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :medium_graphql_api
 
-  # socket "/socket", MediumGraphqlApiWeb.UserSocket,
-  #   websocket: true,
-  #   longpoll: false
+  socket "/socket", MediumGraphqlApiWeb.UserSocket,
+    websocket: true,
+    longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -40,5 +40,6 @@ defmodule MediumGraphqlApiWeb.Endpoint do
     key: "_medium_graphql_api_key",
     signing_salt: "HwPe/KpX"
 
+  plug CORSPlug
   plug MediumGraphqlApiWeb.Router
 end

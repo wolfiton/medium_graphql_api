@@ -1,6 +1,6 @@
 # Quasar App (client)
 
-Medium clone front-end
+A medium Graphql Clone
 
 ## Install the dependencies
 ```bash

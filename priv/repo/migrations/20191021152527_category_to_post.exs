@@ -6,7 +6,7 @@ defmodule MediumGraphqlApi.Repo.Migrations.CategoryToPost do
       add :category_id, references(:categories, on_delete: :delete_all), primary_key: true
       add :post_id, references(:posts, on_delete: :delete_all), primary_key: true
 
-      timestamps()
+      # timestamps()
     end
 
     create index(:category_to_post, [:category_id])

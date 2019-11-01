@@ -5,7 +5,7 @@ defmodule MediumGraphqlApi.Repo.Migrations.Categories do
     create table(:categories) do
       add :name, :string
 
-      timestamps()
+      # timestamps()
     end
 
     create unique_index(:categories, [:name])

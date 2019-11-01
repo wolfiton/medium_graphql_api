@@ -6,7 +6,7 @@ defmodule MediumGraphqlApi.Repo.Migrations.TagToPost do
       add :tag_id, references(:tags, on_delete: :delete_all), primary_key: true
       add :post_id, references(:posts, on_delete: :delete_all), primary_key: true
 
-      timestamps()
+      # timestamps()
     end
 
     create index(:tag_to_post, [:tag_id])
