@@ -28,3 +28,7 @@ medium_graphql_api-*.tar
 /priv/static/
 
 /client/node_modules
+
+/medium_nuxt/node_modules
+
+
