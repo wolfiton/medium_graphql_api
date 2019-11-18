@@ -22,6 +22,18 @@ config :medium_graphql_api, MediumGraphqlApiWeb.Endpoint,
   check_origin: false,
   watchers: []
 
+config :medium_graphql_api, MediumGraphqlApi.Mailer,
+  adapter: Bamboo.SMTPAdapter,
+  server: "smtp.gmail.com",
+  port: 587,
+  username: System.get_env("MY_EMAIL"),
+  password: System.get_env("MY_PASSWORD"),
+  # can be `:always` or `:never`
+  tls: :if_available,
+  # can be `true`
+  ssl: false,
+  retries: 1
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

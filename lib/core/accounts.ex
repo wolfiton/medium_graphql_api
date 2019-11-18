@@ -3,6 +3,8 @@ defmodule MediumGraphqlApi.Accounts do
   The Accounts context.
   """
 
+  @domain "localhost:4000"
+
   import Ecto.Query, warn: false
   alias MediumGraphqlApi.Repo
 
@@ -50,10 +52,29 @@ defmodule MediumGraphqlApi.Accounts do
 
   """
   def create_user(attrs \\ %{}) do
-    %User{}
-    |> User.changeset(attrs)
-    |> Repo.insert()
+    Ecto.Multi.new()
+    |> Ecto.Multi.run(:insert_user, insert_user(attrs))
+    |> Ecto.Multi.run(:send_email, &send_email/2)
+    |> Repo.transaction
   end
+
+  defp insert_user(attrs) do
+    fn repo, _ -> 
+      %User{}
+      |> User.changeset(attrs)
+      |> repo.insert()
+    end
+  end
+
+  def send_email(_, %{insert_user: user}) do
+    with {_, response} <- MediumGraphqlApi.Email.send_confirmation(user) do
+      {:ok, user}
+    else
+      _ ->
+        {:error, "could not send email"}
+    end
+  end
+
 
   @doc """
   Updates a user.

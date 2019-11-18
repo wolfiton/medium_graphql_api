@@ -6,6 +6,11 @@ defmodule MediumGraphqlApi.Blog do
   alias MediumGraphqlApi.Repo
   alias MediumGraphqlApi.Blog.{Comment, Post, Category, Tag}
 
+  def list_posts do
+    Repo.all(Post)
+  end
+
+  def get_post!(id), do: Repo.get!(Post, id)
 
   def create_post(attrs = %{tags: tags, categories: cat}) do
     Ecto.Multi.new()

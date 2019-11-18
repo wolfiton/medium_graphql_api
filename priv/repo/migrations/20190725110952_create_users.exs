@@ -5,7 +5,7 @@ defmodule MediumGraphqlApi.Repo.Migrations.CreateUsers do
     create table(:users) do
       add :username, :string
       add :email, :string
-      add :password, :string
+      add :password_hash, :text
       add :role, :string
       add :confirmed, :boolean
       add :attempts, :string
