@@ -20,7 +20,7 @@ defmodule MediumGraphqlApi.MixProject do
   def application do
     [
       mod: {MediumGraphqlApi.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :bamboo]
     ]
   end
 
