@@ -13,6 +13,7 @@
                         'Elixir.MediumGraphqlApi.Blog.Category',
                         'Elixir.MediumGraphqlApi.Blog.CategoryToPost',
                         'Elixir.MediumGraphqlApi.Blog.Comment',
+                        'Elixir.MediumGraphqlApi.Blog.CommentToUser',
                         'Elixir.MediumGraphqlApi.Blog.Post',
                         'Elixir.MediumGraphqlApi.Blog.Tag',
                         'Elixir.MediumGraphqlApi.Blog.TagToPost',

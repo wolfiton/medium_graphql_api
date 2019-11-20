@@ -83,10 +83,11 @@ defmodule MediumGraphqlApi.Blog do
 
   def get_comment(id), do: Repo.one!(Comment, id)
 
-  def create_comment(attrs = %{current_user: current_user}) do
+  def create_comment(attrs = %{current_user: current_user, reply_user: reply_user}) do
     Ecto.Multi.new()
     |> Ecto.Multi.run(:create_comment, run_create_comment(attrs))
     |> Ecto.Multi.run(:get_user, get_current_user(current_user))
+    |> Ecto.Multi.run(:get_reply, get_reply_user(reply_user))
   end
 
   defp run_create_comment(attrs) do
@@ -99,5 +100,9 @@ defmodule MediumGraphqlApi.Blog do
 
   def get_current_user(current_user: current_user) do
     Repo.one!(User, current_user)
+  end
+
+  defp get_reply_user(reply_user: reply_user) do
+    Repo.one!(Comment, reply_user)
   end
 end

@@ -14,6 +14,11 @@ defmodule MediumGraphqlApi.Accounts.User do
     field :role, :string
     field :username, :string
 
+    many_to_many(:comments, MediumGraphqlApi.Blog.Comment,
+      join_through: "comment_to_user",
+      on_replace: :delete
+    )
+
     timestamps()
   end
 
