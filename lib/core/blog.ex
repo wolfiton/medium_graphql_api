@@ -20,11 +20,11 @@ defmodule MediumGraphqlApi.Blog do
     |> Ecto.Multi.run(:create_tags, create_tags(tags))
     |> Ecto.Multi.run(:create_categories, create_categories(cat))
     |> Ecto.Multi.run(:update_post_assoc, &update_post_assoc/2)
-    |> Repo.transaction
+    |> Repo.transaction()
   end
 
   defp run_create_post(attrs) do
-    fn repo, _ -> 
+    fn repo, _ ->
       %Post{}
       |> Post.changeset(attrs)
       |> repo.insert()
@@ -46,7 +46,13 @@ defmodule MediumGraphqlApi.Blog do
   defp create_tags(tags) do
     fn repo, %{get_tags: existing} ->
       new = tags -- Enum.map(existing, fn x -> x.name end)
-      {_, list} = repo.insert_all(Tag, Enum.map(new, fn x -> %{name: x} end), on_conflict: :nothing, returning: true)
+
+      {_, list} =
+        repo.insert_all(Tag, Enum.map(new, fn x -> %{name: x} end),
+          on_conflict: :nothing,
+          returning: true
+        )
+
       {:ok, list}
     end
   end
@@ -54,7 +60,13 @@ defmodule MediumGraphqlApi.Blog do
   defp create_categories(categories) do
     fn repo, %{get_categories: existing} ->
       new = categories -- Enum.map(existing, fn x -> x.name end)
-      {_, list} = repo.insert_all(Category, Enum.map(new, fn x -> %{name: x} end), on_conflict: :nothing, returning: true)
+
+      {_, list} =
+        repo.insert_all(Category, Enum.map(new, fn x -> %{name: x} end),
+          on_conflict: :nothing,
+          returning: true
+        )
+
       {:ok, list}
     end
   end
@@ -67,5 +79,25 @@ defmodule MediumGraphqlApi.Blog do
     |> Ecto.Changeset.put_assoc(:tags, data.get_tags ++ data.create_tags)
     |> Ecto.Changeset.put_assoc(:categories, data.get_categories ++ data.create_categories)
     |> repo.update()
+  end
+
+  def get_comment(id), do: Repo.one!(Comment, id)
+
+  def create_comment(attrs = %{current_user: current_user}) do
+    Ecto.Multi.new()
+    |> Ecto.Multi.run(:create_comment, run_create_comment(attrs))
+    |> Ecto.Multi.run(:get_user, get_current_user(current_user))
+  end
+
+  defp run_create_comment(attrs) do
+    fn repo, _ ->
+      %Comment{}
+      |> Comment.changeset(attrs)
+      |> repo.insert()
+    end
+  end
+
+  def get_current_user(current_user: current_user) do
+    Repo.one!(User, current_user)
   end
 end

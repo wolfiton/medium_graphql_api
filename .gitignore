@@ -32,4 +32,6 @@ medium_graphql_api-*.tar
 
 /medium_nuxt/node_modules
 
+.elixir_ls
+
 
