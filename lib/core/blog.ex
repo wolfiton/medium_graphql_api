@@ -3,6 +3,8 @@ defmodule MediumGraphqlApi.Blog do
   The Blog context.
   """
   import Ecto.Query, warn: false
+  alias Ecto.Multi
+  alias Ecto.Changeset
   alias MediumGraphqlApi.Repo
   alias MediumGraphqlApi.Blog.{Comment, Post, Category, Tag, Replies}
 
@@ -13,13 +15,13 @@ defmodule MediumGraphqlApi.Blog do
   def get_post!(id), do: Repo.get!(Post, id)
 
   def create_post(attrs = %{tags: tags, categories: cat}) do
-    Ecto.Multi.new()
-    |> Ecto.Multi.run(:create_post, run_create_post(attrs))
-    |> Ecto.Multi.run(:get_tags, get_tags(tags))
-    |> Ecto.Multi.run(:get_categories, get_categories(cat))
-    |> Ecto.Multi.run(:create_tags, create_tags(tags))
-    |> Ecto.Multi.run(:create_categories, create_categories(cat))
-    |> Ecto.Multi.run(:update_post_assoc, &update_post_assoc/2)
+    Multi.new()
+    |> Multi.run(:create_post, run_create_post(attrs))
+    |> Multi.run(:get_tags, get_tags(tags))
+    |> Multi.run(:get_categories, get_categories(cat))
+    |> Multi.run(:create_tags, create_tags(tags))
+    |> Multi.run(:create_categories, create_categories(cat))
+    |> Multi.run(:update_post_assoc, &update_post_assoc/2)
     |> Repo.transaction()
   end
 
@@ -75,9 +77,9 @@ defmodule MediumGraphqlApi.Blog do
     data.create_post
     |> Repo.preload(:tags)
     |> Repo.preload(:categories)
-    |> Ecto.Changeset.change()
-    |> Ecto.Changeset.put_assoc(:tags, data.get_tags ++ data.create_tags)
-    |> Ecto.Changeset.put_assoc(:categories, data.get_categories ++ data.create_categories)
+    |> Changeset.change()
+    |> Changeset.put_assoc(:tags, data.get_tags ++ data.create_tags)
+    |> Changeset.put_assoc(:categories, data.get_categories ++ data.create_categories)
     |> repo.update()
   end
 
@@ -116,28 +118,5 @@ defmodule MediumGraphqlApi.Blog do
   end
   defp insert_reply(_, %{insert_comment: cmt}), do: {:ok, cmt}
    
-  # def get_comment(id), do: Repo.one!(Comment, id)
-
-  # def create_comment(attrs = %{current_user: current_user, reply_user: reply_user}) do
-  #   Ecto.Multi.new()
-  #   |> Ecto.Multi.run(:create_comment, run_create_comment(attrs))
-  #   |> Ecto.Multi.run(:get_user, get_current_user(current_user))
-  #   |> Ecto.Multi.run(:get_reply, get_reply_user(reply_user))
-  # end
-
-  # defp run_create_comment(attrs) do
-  #   fn repo, _ ->
-  #     %Comment{}
-  #     |> Comment.changeset(attrs)
-  #     |> repo.insert()
-  #   end
-  # end
-
-  # def get_current_user(current_user: current_user) do
-  #   Repo.one!(User, current_user)
-  # end
-
-  # defp get_reply_user(reply_user: reply_user) do
-  #   Repo.one!(Comment, reply_user)
-  # end
+  def get_comment(id), do: Repo.one!(Comment, id) |> Repo.preload([:reply_to, :replies])
 end
