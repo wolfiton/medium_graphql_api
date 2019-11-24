@@ -4,7 +4,7 @@ defmodule MediumGraphqlApi.Blog do
   """
   import Ecto.Query, warn: false
   alias MediumGraphqlApi.Repo
-  alias MediumGraphqlApi.Blog.{Comment, Post, Category, Tag}
+  alias MediumGraphqlApi.Blog.{Comment, Post, Category, Tag, Replies}
 
   def list_posts do
     Repo.all(Post)
@@ -81,28 +81,63 @@ defmodule MediumGraphqlApi.Blog do
     |> repo.update()
   end
 
-  def get_comment(id), do: Repo.one!(Comment, id)
-
-  def create_comment(attrs = %{current_user: current_user, reply_user: reply_user}) do
+  def create_comment(attrs) do
     Ecto.Multi.new()
-    |> Ecto.Multi.run(:create_comment, run_create_comment(attrs))
-    |> Ecto.Multi.run(:get_user, get_current_user(current_user))
-    |> Ecto.Multi.run(:get_reply, get_reply_user(reply_user))
+    |> Ecto.Multi.run(:insert_comment, insert_comment(attrs))
+    |> Ecto.Multi.run(:insert_reply, &insert_reply/2)
+    |> Repo.transaction()
   end
 
-  defp run_create_comment(attrs) do
+  defp insert_comment(attrs = %{reply_to_id: id}) when not is_nil(id) do
     fn repo, _ ->
-      %Comment{}
-      |> Comment.changeset(attrs)
-      |> repo.insert()
+      with reply = %Comment{} <- repo.get(Comment, id: id) do
+        Ecto.build_assoc(reply, :reply_to)
+        |> Ecto.Changeset.change(attrs)
+        |> repo.insert()
+      else
+        _ ->
+          {:error, "Reply Comment not found!"}
+      end
     end
   end
 
-  def get_current_user(current_user: current_user) do
-    Repo.one!(User, current_user)
+  defp insert_comment(attrs) do
+    fn repo, _ ->
+        %Comment{}
+        |> Comment.changeset(attrs)
+        |> repo.insert()
+    end
   end
 
-  defp get_reply_user(reply_user: reply_user) do
-    Repo.one!(Comment, reply_user)
+  defp insert_reply(repo, %{insert_comment: cmt = %{reply_to_id: id}}) when not is_nil(id) do
+    %Replies{}
+    |> Replies.changeset(%{comment_id: id, reply_id: cmt.id})
+    |> repo.insert()
   end
+  defp insert_reply(_, %{insert_comment: cmt}), do: {:ok, cmt}
+   
+  # def get_comment(id), do: Repo.one!(Comment, id)
+
+  # def create_comment(attrs = %{current_user: current_user, reply_user: reply_user}) do
+  #   Ecto.Multi.new()
+  #   |> Ecto.Multi.run(:create_comment, run_create_comment(attrs))
+  #   |> Ecto.Multi.run(:get_user, get_current_user(current_user))
+  #   |> Ecto.Multi.run(:get_reply, get_reply_user(reply_user))
+  # end
+
+  # defp run_create_comment(attrs) do
+  #   fn repo, _ ->
+  #     %Comment{}
+  #     |> Comment.changeset(attrs)
+  #     |> repo.insert()
+  #   end
+  # end
+
+  # def get_current_user(current_user: current_user) do
+  #   Repo.one!(User, current_user)
+  # end
+
+  # defp get_reply_user(reply_user: reply_user) do
+  #   Repo.one!(Comment, reply_user)
+  # end
 end

@@ -2,9 +2,6 @@ defmodule MediumGraphqlApi.Accounts do
   @moduledoc """
   The Accounts context.
   """
-
-  @domain "localhost:4000"
-
   import Ecto.Query, warn: false
   alias MediumGraphqlApi.Repo
 

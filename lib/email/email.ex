@@ -18,7 +18,7 @@ defmodule MediumGraphqlApi.Email do
       "<strong>Welcome to Medium! <br /> Please confirm your email: #{build_link(user.email)}</strong>"
     )
     |> text_body("Welcome to Medium. Please confirm your email: #{build_link(user.email)}")
-    |> MediumGraphqlApi.Mailer.deliver_now(response: true)
+    |> MediumGraphqlApi.Mailer.deliver_now()
   end
 
   defp build_link(email) do

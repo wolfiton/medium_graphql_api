@@ -5,14 +5,14 @@ defmodule MediumGraphqlApiWeb.Schema.PostTypes do
   object :post do
     field(:id, :id)
     field(:title, :string)
-    field(:content, :string)
-    field(:published, :boolean)
+    field(:body, :string)
     field(:user, :user, resolve: assoc(:user))
+    # field(:categories, :category, resolve: assoc(:category))
+    # field(:tags, :tag, resolve: assoc(:tag))
   end
 
   input_object :post_input do
     field(:title, non_null(:string))
-    field(:content, non_null(:string))
-    field(:published, non_null(:boolean))
+    field(:body, non_null(:string))
   end
 end

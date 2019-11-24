@@ -4,13 +4,16 @@ defmodule MediumGraphqlApiWeb.Schema.CommentTypes do
 
   object :comment do
     field(:id, :id)
-    field(:content, :string)
+    field(:message, :string)
     field(:user, :user, resolve: assoc(:user))
     field(:post, :post, resolve: assoc(:post))
+    field(:reply_to, :comment, resolve: assoc(:comment))
+    field(:replies, :comment, resolve: list_of(assoc(:comment)))
   end
 
   input_object :comment_input do
-    field(:content, non_null(:string))
+    field(:message, non_null(:string))
     field(:post_id, non_null(:id))
+    field(:reply_to_id, non_null(:id))
   end
 end
