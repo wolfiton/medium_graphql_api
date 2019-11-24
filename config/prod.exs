@@ -16,6 +16,14 @@ config :medium_graphql_api, MediumGraphqlApiWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+#For production
+config :medium_graphql_api, MediumGraphqlApi.Mailer,
+  adapter: Bamboo.MailgunAdapter,
+  domain: "mail.yourdomain.com",
+  ssl: true,
+  api_key: System.get_env("MAILGUN_KEY")
+
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

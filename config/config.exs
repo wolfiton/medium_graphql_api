@@ -14,7 +14,6 @@ config :medium_graphql_api,
 config :medium_graphql_api, MediumGraphqlApiWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "5fthjWaQW91dx+MEe/oy/AtCAYReuqV4o/9G0yuwWRPXeDmjOVuJnKmQ+4C/Itp2",
-  render_errors: [view: MediumGraphqlApiWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: MediumGraphqlApi.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

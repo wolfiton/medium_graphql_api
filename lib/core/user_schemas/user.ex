@@ -4,7 +4,7 @@ defmodule MediumGraphqlApi.Accounts.User do
   alias MediumGraphqlApi.Encryption, as: Encrypt
 
   schema "users" do
-    field :confirmed, :boolean
+    field :confirmed, :boolean, default: false
     field :email, :string
     field :locked, :boolean
     field :password, :string, virtual: true
